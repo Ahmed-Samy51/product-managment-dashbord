@@ -1,0 +1,19 @@
+
+body{
+  font-family: "Exo", sans-serif;
+}
+.form-control:focus{
+box-shadow: none;
+border-color: var(--bs-border-color);
+
+}
+.form-floating textarea.form-control{
+    min-height: 150px;
+    max-height: 300px;
+}
+.product-card{
+    background-color: rgb(18, 18, 18);
+    img{
+        height: 170px;
+    }
+}

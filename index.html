@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fontawesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,
+    wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..
+    900&display=swap" rel="stylesheet">
+    <title>product Dashboard</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="container">
+                <h1 class="h3 text-center m-3">Product Managment</h1>
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="productname" placeholder="Product Name">
+                        <label for="floatingInput">Product Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="category" placeholder="Category" list="cat">
+                        <label for="floatingInput">Category</label>
+                        <datalist id="cat">
+                            <option>Camera</option>
+                            <option>Laptop</option>
+                            <option>PC</option>
+                            <option>Mobile Phone</option>
+                        </datalist>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="price" placeholder="Price">
+                        <label for="floatingInput">Price</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea type="text" class="form-control" id="description"
+                            placeholder="Description"></textarea>
+                        <label for="floatingInput">Description</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" class="form-control" id="productimage" placeholder="productimage">
+                    </div>
+
+                    <button type="button" class=" btn btn-primary " onclick="addproduct()"  >Add Product</button>
+
+            </div>
+            </form>
+
+
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-4">
+                <div class="row g-3" id="productscontainer">
+                    
+
+
+
+                </div>
+
+
+
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/index.js"></script>
+</body>
+
+</html>
