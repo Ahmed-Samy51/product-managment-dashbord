@@ -7,6 +7,7 @@ var productpriceinput = document.getElementById("price");
 var productdescriptioninput = document.getElementById("description");
 var productimageinput = document.getElementById("productimage");
 var ProductsContainer =  document.getElementById("productscontainer");
+var productSearch= document.getElementById("searchProduct")
 
 
 console.log(productnameinput);
@@ -22,10 +23,9 @@ console.log(productimageinput);
 
 // app variable
 
-var ProductList=[];
+var ProductList=JSON.parse(localStorage.getItem('ProductList'))||[];
 
-
-
+DisplayAllProducts();
 
 
 //function
@@ -35,9 +35,11 @@ function addproduct()
         name: productnameinput.value,
         category:productcategoryinput.value,
         price:productpriceinput.value,
-        description:productdescriptioninput.value
+        description:productdescriptioninput.value,
+        imagesrc:productimageinput.files[0].name
     }
        ProductList.push(product)   
+       localStorage.setItem('ProductList', JSON.stringify(ProductList) )
        displayproduct(ProductList.length-1)
 }
 
@@ -46,7 +48,7 @@ function addproduct()
 function displayproduct(index) {
     var ProductCardMarkup = ` <div class="col-md-6 col-lg-3">
                         <div class="product-card p-2 m rounded-3">
-                            <img class="w-100 object-fit-contain rounded-2 bg-white mb-2" src="./images/OIP.webp"
+                            <img class="w-100 object-fit-contain rounded-2 bg-white mb-2" src="./images/${ProductList[index].imagesrc}"
                                 alt="mobile">
                             <div class="product-info">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -69,7 +71,7 @@ function displayproduct(index) {
                             </div>
                             <div class="d-flex gap-2">
                              <button class="btn w-100 btn-outline-primary">Update</button>
-                            <button class="btn w-100 btn-outline-warning">Delete</button>   
+                            <button class="btn w-100 btn-outline-warning" onclick=deleteProduct(${index}) >Delete</button>   
                             </div>
                             
 
@@ -80,5 +82,43 @@ function displayproduct(index) {
 
 
  ProductsContainer.innerHTML+=ProductCardMarkup;
+}
+function DisplayAllProducts(){
+
+    for(var i=0;i<ProductList.length;i++)
+    {
+        displayproduct(i);
+    }
+
+
+}
+function deleteProduct(index){
+
+    ProductList.splice(index,1)
+    localStorage.setItem('ProductList',JSON.stringify(ProductList))
+    ProductsContainer.innerHTML=""
+    DisplayAllProducts();
+
+
+
+}
+
+function searchProducts(){
+    ProductsContainer.innerHTML="";
+    var searched = productSearch.value;
+    for(var i=0 ;i<ProductList.length;i++){
+        
+        if(ProductList[i].name.toLowerCase().includes(searched.toLowerCase()))
+        {   
+            displayproduct(i);
+        }
+
+
+    }
+
+
+
+
+
 }
 
